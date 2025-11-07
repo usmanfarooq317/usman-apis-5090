@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/YOUR_GITHUB_USER/usman-apis-5090.git'
+                git branch: 'main', url: 'https://github.com/usmanfarooq317/usman-apis-5090.git'
             }
         }
 
@@ -66,7 +66,7 @@ pipeline {
                         sshagent(['usman-ec2-key']) {
                             // Replace ubuntu@<EC2_IP> with your actual EC2 host
                             sh """
-                                ssh -o StrictHostKeyChecking=no ubuntu@YOUR.EC2.IP.ADDRESS '
+                                ssh -o StrictHostKeyChecking=no ubuntu@13.50.238.43 '
                                     docker pull ${DOCKER_USER}/${IMAGE_NAME}:${env.NEW_VERSION} &&
                                     docker stop ${IMAGE_NAME} || true &&
                                     docker rm ${IMAGE_NAME} || true &&
